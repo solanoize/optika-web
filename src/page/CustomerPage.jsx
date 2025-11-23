@@ -12,6 +12,7 @@ import { UX_FEEDBACK_CONFIRM, UX_FEEDBACK_SUCCESS } from "../constant/messages";
 import CustomerFormComponent from "../component/customer/CustomerFormComponent";
 import customerRetrieveService from "../service/customer/customerRetrieveService";
 import customerUpdateService from "../service/customer/customerUpdateService";
+import customerDeleteService from "../service/customer/customerDeleteService";
 
 export default function CustomerPage() {
   const [customers, setCustomers] = useState([]);
@@ -139,7 +140,7 @@ export default function CustomerPage() {
       const result = await Swal.fire(UX_FEEDBACK_CONFIRM.delete);
 
       if (result.isConfirmed) {
-        // await customerDeleteService(product.id);
+        await customerDeleteService(customer.id);
         Swal.fire(UX_FEEDBACK_SUCCESS.delete);
         onReset();
         await onList();
