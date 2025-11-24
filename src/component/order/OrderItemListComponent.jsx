@@ -1,4 +1,4 @@
-import { Button, Form, Table } from "react-bootstrap";
+import { Alert, Button, Form, Table } from "react-bootstrap";
 
 export default function OrderItemListComponent({
   data,
@@ -17,6 +17,16 @@ export default function OrderItemListComponent({
             <th>Actions</th>
           </tr>
         </thead>
+        {validationError?.order_items &&
+          validationError?.order_items?.map((text, index) => (
+            <tbody key={index}>
+              <tr>
+                <td colSpan={5}>
+                  <Alert variant="danger">{text}</Alert>
+                </td>
+              </tr>
+            </tbody>
+          ))}
         <tbody>
           {data?.map((value, index) => (
             <tr key={index}>

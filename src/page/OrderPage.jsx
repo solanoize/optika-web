@@ -166,7 +166,9 @@ export default function OrderPage() {
                   onChange={onChange}
                   loading={createLoading}
                   customerChoiceComponent={
-                    <CustomerChoiseModalWidget onTransfer={setCustomer} />
+                    <CustomerChoiseModalWidget
+                      onTransfer={(c) => setCustomer(c)}
+                    />
                   }
                 />
               </Card.Body>
@@ -203,7 +205,10 @@ export default function OrderPage() {
           </Col>
           <Col md={4}>
             <ProductChoiseEmbedWidget
-              onTransfer={(p) => setProduct({ ...p })}
+              onTransfer={(p) => {
+                setProduct({ ...p });
+                setValidationError(null);
+              }}
             />
           </Col>
         </Row>

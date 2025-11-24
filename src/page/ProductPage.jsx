@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import ProductFormComponent from "../component/product/ProductFormComponent";
 import ProductListComponent from "../component/product/ProductListComponent";
 import NavbarComponent from "../component/common/NavbarComponent";
@@ -13,6 +13,8 @@ import productRetrieveService from "../service/product/productRetrieveService";
 import productUpdateService from "../service/product/productUpdateService";
 import productDeleteService from "../service/product/productDeleteService";
 import { INTIAL_PRODUCT } from "../constant/product";
+import SearchComponent from "../component/common/SearchComponent";
+import PaginateComponent from "../component/common/PaginateComponent";
 
 export default function ProductPage() {
   const [products, setProducts] = useState([]);
@@ -219,17 +221,33 @@ export default function ProductPage() {
         </Row>
         <Row>
           <Col>
-            <ProductListComponent
-              data={products}
-              pagination={pagination}
-              loading={listLoading}
-              onPaginate={onList}
-              onSearch={onList}
-              search={search}
-              setSearch={setSearch}
-              onRetrieve={onRetrieve}
-              count={count}
-            />
+            <Card>
+              <Card.Header>
+                <strong>Product List</strong>
+              </Card.Header>
+              <Card.Body>
+                <Row>
+                  <Col>
+                    <SearchComponent
+                      onSearch={onList}
+                      search={search}
+                      setSearch={setSearch}
+                    />
+                  </Col>
+                  <Col>
+                    <PaginateComponent
+                      onPaginate={onList}
+                      pagination={pagination}
+                    />
+                  </Col>
+                </Row>
+              </Card.Body>
+              <ProductListComponent
+                data={products}
+                loading={listLoading}
+                onRetrieve={onRetrieve}
+              />
+            </Card>
           </Col>
         </Row>
       </Container>
