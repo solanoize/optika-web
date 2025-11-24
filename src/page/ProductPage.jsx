@@ -82,12 +82,12 @@ export default function ProductPage() {
     }
   };
 
-  const onRetrieve = async (id) => {
+  const onRetrieve = async (object) => {
     setRetrieveLoading(true);
     setValidationError(null);
 
     try {
-      const data = await productRetrieveService(id);
+      const data = await productRetrieveService(object?.id);
       setProduct(data);
     } catch (error) {
       if (error instanceof ValidationDetailException) {

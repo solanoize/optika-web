@@ -3,6 +3,7 @@ import ProductPage from "./page/ProductPage";
 import { AuthProvider } from "./provider/AuthProvider";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CustomerPage from "./page/CustomerPage";
+import OrderPage from "./page/OrderPage";
 
 function App() {
   return (
@@ -21,6 +22,14 @@ function App() {
           element={
             <AuthProvider>
               <CustomerPage />
+            </AuthProvider>
+          }
+        />
+        <Route
+          path="/order"
+          element={
+            <AuthProvider>
+              <OrderPage />
             </AuthProvider>
           }
         />

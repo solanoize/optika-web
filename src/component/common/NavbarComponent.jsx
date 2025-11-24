@@ -29,7 +29,7 @@ export default function NavbarComponent() {
           <Nav className="me-auto">
             <Nav.Link href="#/">Product</Nav.Link>
             <Nav.Link href="#customers">Customer</Nav.Link>
-            <Nav.Link href="#link">Order</Nav.Link>
+            <Nav.Link href="#order">Order</Nav.Link>
             <Nav.Link href="#link">Incoming Goods</Nav.Link>
             <Nav.Link href="#link">Stock Movement</Nav.Link>
 
